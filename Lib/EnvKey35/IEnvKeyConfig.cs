@@ -4,8 +4,10 @@ namespace EnvKey
 {
   public interface IEnvKeyConfig
   {
-    bool TryRead(string envKey, out Dictionary<string, string> config);
+    bool TryRead(out Dictionary<string, string> config);
 
-    bool TryReadRaw(string envKey, out string config);
+    bool TryReadRaw(out string config);
+
+    bool TryLoadIntoEnvironment();
   }
 }

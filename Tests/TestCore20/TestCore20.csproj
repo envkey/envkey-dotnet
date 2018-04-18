@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EnvKey" Version="1.1.1-pre0" />
+    <PackageReference Include="EnvKey" Version="1.1.1-pre4" />
   </ItemGroup>
 
   <ItemGroup>

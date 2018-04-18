@@ -5,18 +5,22 @@ using System.IO;
 
 namespace EnvKey
 {
-  public class EnvKeyConfig
+  public class EnvKeyConfig : IEnvKeyConfig
   {
     private readonly EnvKeyOptions options;
+
+    public EnvKeyConfig() : this(new EnvKeyOptions())
+    {
+    }
 
     public EnvKeyConfig(EnvKeyOptions options)
     {
       this.options = options;
     }
 
-    public bool TryRead(string envKey, out Dictionary<string, string> config)
+    public bool TryRead(out Dictionary<string, string> config)
     {
-      if (!TryReadRaw(envKey, out var rawConfig))
+      if (!TryReadRaw(out var rawConfig))
       {
         config = null;
 
@@ -28,7 +32,7 @@ namespace EnvKey
       return true;
     }
 
-    public bool TryReadRaw(string envKey, out string config)
+    public bool TryReadRaw(out string config)
     {
       var fullEnvKeyExePath = options.GetEnvKeyExecutable();
 
@@ -39,9 +43,18 @@ namespace EnvKey
         return false;
       }
 
+      var envKey = options.EnvKey;
+
+      var useCaching = options.UseCaching()
+        ? "--cache"
+        : "";
+
+      const string clientName = "--client-name envkey-dotnet";
+
+      var arguments = $"{envKey} {useCaching} {clientName}";
       var process = new Process
       {
-        StartInfo = new ProcessStartInfo(fullEnvKeyExePath, envKey)
+        StartInfo = new ProcessStartInfo(fullEnvKeyExePath, arguments)
         {
           UseShellExecute = false,
           WindowStyle = ProcessWindowStyle.Hidden,
@@ -62,6 +75,21 @@ namespace EnvKey
       }
 
       config = output;
+
+      return true;
+    }
+
+    public bool TryLoadIntoEnvironment()
+    {
+      if (!TryRead(out var config))
+      {
+        return false;
+      }
+
+      foreach (var kvp in config)
+      {
+        Environment.SetEnvironmentVariable(kvp.Key, kvp.Value, EnvironmentVariableTarget.Process);
+      }
 
       return true;
     }

@@ -32,8 +32,8 @@
 
   <ItemGroup>
     <Compile Include="..\EnvKey35\EnvKeyOptions.cs" Link="EnvKeyOptions.cs" />
-    <Compile Include="..\EnvKey35\EnvKeyConfig.cs" Link="EnvKeyConfig.cs" />
     <Compile Include="..\EnvKey35\IEnvKeyConfig.cs" Link="IEnvKeyConfig.cs" />
+    <Compile Include="..\EnvKey35\EnvKeyConfig.cs" Link="EnvKeyConfig.cs" />
   </ItemGroup>
 
 </Project>

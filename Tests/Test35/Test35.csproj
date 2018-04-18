@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EnvKey">
-      <Version>1.1.1-pre0</Version>
+      <Version>1.1.1-pre4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
