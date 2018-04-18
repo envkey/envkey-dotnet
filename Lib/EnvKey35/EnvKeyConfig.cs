@@ -2,25 +2,30 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace EnvKey
 {
+  /// <inheritdoc />
   public class EnvKeyConfig : IEnvKeyConfig
   {
     private readonly EnvKeyOptions options;
 
+    /// <inheritdoc />
     public EnvKeyConfig() : this(new EnvKeyOptions())
     {
     }
 
+    /// <inheritdoc />
     public EnvKeyConfig(EnvKeyOptions options)
     {
       this.options = options;
     }
 
-    public bool TryRead(out Dictionary<string, string> config)
+    /// <inheritdoc />
+    public bool TryLoad(out Dictionary<string, string> config)
     {
-      if (!TryReadRaw(out var rawConfig))
+      if (!TryLoadRaw(out var rawConfig))
       {
         config = null;
 
@@ -32,7 +37,8 @@ namespace EnvKey
       return true;
     }
 
-    public bool TryReadRaw(out string config)
+    /// <inheritdoc />
+    public bool TryLoadRaw(out string config)
     {
       var fullEnvKeyExePath = options.GetEnvKeyExecutable();
 
@@ -58,7 +64,10 @@ namespace EnvKey
         {
           UseShellExecute = false,
           WindowStyle = ProcessWindowStyle.Hidden,
-          RedirectStandardOutput = true
+          RedirectStandardOutput = true,
+          RedirectStandardError = true,
+          StandardErrorEncoding = Encoding.UTF8,
+          StandardOutputEncoding = Encoding.UTF8
         }
       };
 
@@ -79,9 +88,10 @@ namespace EnvKey
       return true;
     }
 
+    /// <inheritdoc />
     public bool TryLoadIntoEnvironment()
     {
-      if (!TryRead(out var config))
+      if (!TryLoad(out var config))
       {
         return false;
       }

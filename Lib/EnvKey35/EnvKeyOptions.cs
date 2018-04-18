@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace EnvKey
 {
+  /// <summary>
+  /// Options for the functionality of EnvKey.
+  /// </summary>
   public class EnvKeyOptions
   {
     /// <summary>

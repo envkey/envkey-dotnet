@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using System.Web.Script.Serialization;
 
 namespace EnvKey
 {
-  public static class JsonDeserializer
+  internal static class JsonDeserializer
   {
-    public static T Deserialize<T>(string jsonData)
+    internal static T Deserialize<T>(string jsonData)
     {
-      return JsonConvert.DeserializeObject<T>(jsonData);
+      var serializer = new JavaScriptSerializer();
+      return serializer.Deserialize<T>(jsonData);
     }
   }
 }

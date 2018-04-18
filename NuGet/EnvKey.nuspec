@@ -10,12 +10,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Loads the configuration of envkey.</description>
     <dependencies>
-      <group targetFramework="net35">
-        <dependency id="Newtonsoft.Json" version="6.0.1" />
-      </group>
-      <group targetFramework="net46">
-        <dependency id="Newtonsoft.Json" version="6.0.1" />
-      </group>
       <group>
         <!--Default dependencies group-->
       </group>
@@ -30,10 +24,20 @@
   -->
   <files>
     <file src="contentFiles\any\any\envkey-fetch.exe" target="contentFiles\any\any\envkey-fetch.exe" />
+
     <file src="..\Lib\EnvKey35\bin\EnvKey.dll" target="lib\net35\EnvKey.dll" />
+    <file src="..\Lib\EnvKey35\bin\EnvKey.xml" target="lib\net35\EnvKey.xml" />
+
     <file src="..\Lib\EnvKey46\bin\EnvKey.dll" target="lib\net46\EnvKey.dll" />
+    <file src="..\Lib\EnvKey46\bin\EnvKey.xml" target="lib\net46\EnvKey.xml" />
+
     <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.dll" target="lib\net471\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.xml" target="lib\net471\EnvKey.xml" />
+
     <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.dll" target="lib\netstandard2.0\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.xml" target="lib\netstandard2.0\EnvKey.xml" />
+
     <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.dll" target="lib\netcoreapp2.0\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.xml" target="lib\netcoreapp2.0\EnvKey.xml" />
   </files>
 </package>

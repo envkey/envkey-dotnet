@@ -22,14 +22,18 @@ namespace Test
       };
       var envKey = new EnvKeyConfig(options);
 
-      var success = envKey.TryReadRaw(out var config);
-      Console.WriteLine($"Can read as raw? {success}");
+      var success = envKey.TryLoadRaw(out var config);
+      Console.WriteLine($"Can load as raw? {success}");
       Console.WriteLine($"Config: {config.Trim()}");
 
-      success = envKey.TryRead(out var configDir);
-      Console.WriteLine($"Can read as json? {success}");
+      success = envKey.TryLoad(out var configDir);
+      Console.WriteLine($"Can load as json? {success}");
       Console.WriteLine($"Config Count: {configDir.Count}");
-
+      foreach (var kvp in configDir)
+      {
+        Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+      }
+        
       var countBefore = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process).Count;
       success = envKey.TryLoadIntoEnvironment();
       var countAfter = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process).Count;

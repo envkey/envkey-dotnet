@@ -8,26 +8,32 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <OutputPath>bin\</OutputPath>
+    <DocumentationFile>bin\netstandard2.0\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <OutputPath>bin\</OutputPath>
+    <DocumentationFile>bin\netstandard2.0\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.0|AnyCPU'">
     <OutputPath>bin\</OutputPath>
+    <DocumentationFile>bin\netcoreapp2.0\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.0|AnyCPU'">
     <OutputPath>bin\</OutputPath>
+    <DocumentationFile>bin\netcoreapp2.0\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
     <OutputPath>bin\</OutputPath>
+    <DocumentationFile>bin\net471\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net471|AnyCPU'">
     <OutputPath>bin\</OutputPath>
+    <DocumentationFile>bin\net471\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
