@@ -46,16 +46,26 @@ namespace EnvKey
     }
 
     /// <summary>
-    /// Try loading the configuration and put it into the process environment variables.
+    /// Try loading the configuration and adds missing items to the environment variables of the current process.
     /// </summary>
     public static bool TryLoadIntoEnvironment(this EnvKeyConfig self)
+    {
+      return TryLoadIntoEnvironment(self, false);
+    }
+
+    /// <summary>
+    /// Try loading the configuration and adds it to the environment variables of the current process.
+    /// </summary>
+    /// <param name="self"></param>
+    /// <param name="forceUpdate">Defines if existing environment variables should be updated.</param>
+    public static bool TryLoadIntoEnvironment(this EnvKeyConfig self, bool forceUpdate)
     {
       if (!self.TryLoad(out var config))
       {
         return false;
       }
 
-      EnvKeyConfig.PatchEnvironmentVariables(config);
+      EnvKeyConfig.PatchEnvironmentVariables(config, forceUpdate);
 
       return true;
     }

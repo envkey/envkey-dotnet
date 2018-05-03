@@ -12,5 +12,12 @@ namespace EnvKey
     /// </summary>
     /// <exception cref="InvalidOperationException">In case of any error. See inner exception for more details.</exception>
     void Load();
+
+    /// <summary>
+    /// Loads the configuration and adds it to the environment variables of the current process.
+    /// </summary>
+    /// <param name="forceUpdate">Defines if existing environment variables should be updated.</param>
+    /// <exception cref="InvalidOperationException">In case of any error. See inner exception for more details.</exception>
+    void Load(bool forceUpdate);
   }
 }

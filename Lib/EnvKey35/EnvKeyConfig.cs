@@ -83,10 +83,16 @@ namespace EnvKey
     /// <inheritdoc />
     public void Load()
     {
+      Load(false);
+    }
+
+    /// <inheritdoc />
+    public void Load(bool forceUpdate)
+    {
       try
       {
         var config = InnerLoad();
-        PatchEnvironmentVariables(config);
+        PatchEnvironmentVariables(config, forceUpdate);
       }
       catch (Exception ex)
       {
@@ -94,13 +100,15 @@ namespace EnvKey
       }
     }
 
-    internal static void PatchEnvironmentVariables(Dictionary<string, string> config)
+    internal static void PatchEnvironmentVariables(Dictionary<string, string> config, bool forceUpdate)
     {
+      var skipExisting = !forceUpdate;
+
       var existingKeys = Environment.GetEnvironmentVariables().Keys.Cast<object>().Select(k => k.ToString().ToUpper()).ToArray();
 
       foreach (var kvp in config)
       {
-        if (existingKeys.Contains(kvp.Key.ToUpper()))
+        if (skipExisting && existingKeys.Contains(kvp.Key.ToUpper()))
           continue;
 
         Environment.SetEnvironmentVariable(kvp.Key, kvp.Value, EnvironmentVariableTarget.Process);
