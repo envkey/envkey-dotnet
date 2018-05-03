@@ -3,11 +3,14 @@
 [NuGet Package](https://www.nuget.org/packages/EnvKey)  
 [EnvKey Releases](https://github.com/envkey/envkey-fetch/releases)
 
+The current envkey nuget package supports only windows on x64.
+If you wish to use it on linux or mac please [open an issue](https://github.com/envkey/envkey-dotnet/issues) to show your demand.
+
 # Usage
 
 ```cs
 var envKey = new EnvKeyConfig();
-var success = envKey.TryLoadIntoEnvironment();
+var success = envKey.Load();
 
 Stripe.ApiKey = Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY");
 ```
