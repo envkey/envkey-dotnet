@@ -1,0 +1,63 @@
+﻿using System.Collections.Generic;
+
+namespace EnvKey
+{
+  /// <summary>
+  /// Extensions to EnvKeyConfig
+  /// </summary>
+  public static class EnvKeyConfigExtensions
+  {
+    /// <summary>
+    /// Try loading the configuration and returning it as it was downloaded.
+    /// </summary>
+    public static bool TryLoadRaw(this EnvKeyConfig self, out string config)
+    {
+      try
+      {
+        config = self.InnerLoadRaw();
+
+        return true;
+      }
+      catch
+      {
+        config = null;
+
+        return false;
+      }
+    }
+
+    /// <summary>
+    /// Try loading the configuration as dictionary.
+    /// </summary>
+    public static bool TryLoad(this EnvKeyConfig self, out Dictionary<string, string> config)
+    {
+      try
+      {
+        config = self.InnerLoad();
+
+        return true;
+      }
+      catch
+      {
+        config = null;
+
+        return false;
+      }
+    }
+
+    /// <summary>
+    /// Try loading the configuration and put it into the process environment variables.
+    /// </summary>
+    public static bool TryLoadIntoEnvironment(this EnvKeyConfig self)
+    {
+      if (!self.TryLoad(out var config))
+      {
+        return false;
+      }
+
+      EnvKeyConfig.PatchEnvironmentVariables(config);
+
+      return true;
+    }
+  }
+}

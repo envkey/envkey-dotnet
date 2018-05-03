@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace EnvKey
@@ -22,31 +23,13 @@ namespace EnvKey
       this.options = options;
     }
 
-    /// <inheritdoc />
-    public bool TryLoad(out Dictionary<string, string> config)
-    {
-      if (!TryLoadRaw(out var rawConfig))
-      {
-        config = null;
-
-        return false;
-      }
-
-      config = JsonDeserializer.Deserialize<Dictionary<string, string>>(rawConfig);
-
-      return true;
-    }
-
-    /// <inheritdoc />
-    public bool TryLoadRaw(out string config)
+    internal string InnerLoadRaw()
     {
       var fullEnvKeyExePath = options.GetEnvKeyExecutable();
 
       if (!File.Exists(fullEnvKeyExePath))
       {
-        config = null;
-
-        return false;
+        throw new FileNotFoundException("EnvKey executable was not found.", fullEnvKeyExePath);
       }
 
       var envKey = options.EnvKey;
@@ -74,34 +57,54 @@ namespace EnvKey
       process.Start();
 
       var output = process.StandardOutput.ReadToEnd();
-      var successfulExit = process.WaitForExit((int)TimeSpan.FromSeconds(3).TotalMilliseconds);
+      var successfulExit = process.WaitForExit((int)TimeSpan.FromSeconds(5).TotalMilliseconds);
 
       if (!successfulExit)
       {
-        config = null;
-
-        return false;
+        throw new InvalidOperationException("EnvKey process timed out.");
       }
 
-      config = output;
+      if (!output.StartsWith("{"))
+      {
+        throw new InvalidOperationException($"EnvKey returned a non-config object: '{output}'.");
+      }
 
-      return true;
+      return output;
+    }
+
+    internal Dictionary<string, string> InnerLoad()
+    {
+      var config = InnerLoadRaw();
+      var dict = JsonDeserializer.Deserialize<Dictionary<string, string>>(config);
+
+      return dict;
     }
 
     /// <inheritdoc />
-    public bool TryLoadIntoEnvironment()
+    public void Load()
     {
-      if (!TryLoad(out var config))
+      try
       {
-        return false;
+        var config = InnerLoad();
+        PatchEnvironmentVariables(config);
       }
+      catch (Exception ex)
+      {
+        throw new InvalidOperationException("An error occurred while fetching EnvKey configuration.", ex);
+      }
+    }
+
+    internal static void PatchEnvironmentVariables(Dictionary<string, string> config)
+    {
+      var existingKeys = Environment.GetEnvironmentVariables().Keys.Cast<object>().Select(k => k.ToString().ToUpper()).ToArray();
 
       foreach (var kvp in config)
       {
+        if (existingKeys.Contains(kvp.Key.ToUpper()))
+          continue;
+
         Environment.SetEnvironmentVariable(kvp.Key, kvp.Value, EnvironmentVariableTarget.Process);
       }
-
-      return true;
     }
   }
 }

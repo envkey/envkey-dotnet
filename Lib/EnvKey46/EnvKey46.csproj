@@ -49,6 +49,9 @@
     <Compile Include="..\EnvKey35\EnvKeyConfig.cs">
       <Link>EnvKeyConfig.cs</Link>
     </Compile>
+    <Compile Include="..\EnvKey35\EnvKeyConfigExtensions.cs">
+      <Link>EnvKeyConfigExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\EnvKey35\EnvKeyOptions.cs">
       <Link>EnvKeyOptions.cs</Link>
     </Compile>

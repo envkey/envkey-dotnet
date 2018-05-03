@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace EnvKey
 {
@@ -8,19 +8,9 @@ namespace EnvKey
   public interface IEnvKeyConfig
   {
     /// <summary>
-    /// Try loading the configuration as dictionary.
+    /// Loads the configuration and adds missing items to the environment variables of the current process.
     /// </summary>
-    bool TryLoad(out Dictionary<string, string> config);
-
-    /// <summary>
-    /// Try loading the configuration and returning it as it was downloaded.
-    /// </summary>
-    bool TryLoadRaw(out string config);
-
-    /// <summary>
-    /// Try loading the configuration and put it into the process environment variables.
-    /// </summary>
-    /// <returns></returns>
-    bool TryLoadIntoEnvironment();
+    /// <exception cref="InvalidOperationException">In case of any error. See inner exception for more details.</exception>
+    void Load();
   }
 }

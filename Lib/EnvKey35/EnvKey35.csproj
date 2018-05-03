@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnvKeyConfig.cs" />
+    <Compile Include="EnvKeyConfigExtensions.cs" />
     <Compile Include="EnvKeyOptions.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="IEnvKeyConfig.cs" />
