@@ -27,12 +27,17 @@ namespace EnvKey
     {
       var fullEnvKeyExePath = options.GetEnvKeyExecutable();
 
-      if (!File.Exists(fullEnvKeyExePath))
+      if (fullEnvKeyExePath == null || !File.Exists(fullEnvKeyExePath))
       {
-        throw new FileNotFoundException("EnvKey executable was not found.", fullEnvKeyExePath);
+        throw new FileNotFoundException("EnvKey executable was not found. Please specify the full path via the options.", fullEnvKeyExePath);
       }
 
       var envKey = options.EnvKey;
+
+      if (envKey == null)
+      {
+        throw new InvalidOperationException("No envkey found. Please add one on the environment as 'ENVKEY' or configure the key via the options.");
+      }
 
       var useCaching = options.UseCaching()
         ? "--cache"

@@ -40,7 +40,8 @@ namespace EnvKey
 
       if (searchPath == null)
       {
-        throw new InvalidOperationException("Can't determine the executable path of envkey-fetch.");
+        Trace.WriteLine("Can't determine the executable path of envkey-fetch.");
+        return null;
       }
 
       const string envKeyExe = "envkey-fetch.exe";
