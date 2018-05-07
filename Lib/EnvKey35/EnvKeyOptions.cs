@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -34,14 +35,34 @@ namespace EnvKey
         return EnvKeyPath;
       }
 
-      var currentWorkingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)
-                                 ?? Directory.GetCurrentDirectory();
+      var searchPath = getEntryAssemblyLocation()
+                    ?? getCurrentDirectoryLocation();
+
+      if (searchPath == null)
+      {
+        throw new InvalidOperationException("Can't determine the executable path of envkey-fetch.");
+      }
 
       const string envKeyExe = "envkey-fetch.exe";
 
-      var fullEnvKeyExePath = Path.Combine(currentWorkingDirectory, envKeyExe);
+      var fullEnvKeyExePath = Path.Combine(searchPath, envKeyExe);
+      Trace.WriteLine($"Using '{fullEnvKeyExePath}' as envkey executable.");
 
       return fullEnvKeyExePath;
+    }
+
+    private static string getEntryAssemblyLocation()
+    {
+      var assembly = Assembly.GetEntryAssembly();
+
+      return assembly == null
+        ? null
+        : Path.GetDirectoryName(assembly.Location);
+    }
+
+    private static string getCurrentDirectoryLocation()
+    {
+      return Directory.GetCurrentDirectory();
     }
 
     internal bool UseCaching()
