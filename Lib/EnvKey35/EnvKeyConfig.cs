@@ -50,6 +50,7 @@ namespace EnvKey
       {
         StartInfo = new ProcessStartInfo(fullEnvKeyExePath, arguments)
         {
+          CreateNoWindow = true,
           UseShellExecute = false,
           WindowStyle = ProcessWindowStyle.Hidden,
           RedirectStandardOutput = true,
