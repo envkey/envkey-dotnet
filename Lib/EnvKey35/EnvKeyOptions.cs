@@ -44,9 +44,11 @@ namespace EnvKey
         return null;
       }
 
-      const string envKeyExe = "envkey-fetch.exe";
+      var envKeyExecutable = Environment.OSVersion.Platform.ToString().ToLower().Contains("win")
+        ? "envkey-fetch.exe"
+        : "envkey-fetch";
 
-      var fullEnvKeyExePath = Path.Combine(searchPath, envKeyExe);
+      var fullEnvKeyExePath = Path.Combine(searchPath, envKeyExecutable);
       Trace.WriteLine($"Using '{fullEnvKeyExePath}' as envkey executable.");
 
       return fullEnvKeyExePath;

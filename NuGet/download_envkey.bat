@@ -10,10 +10,15 @@ mkdir %scriptdir%contentFiles\any\any>NUL 2>&1
 
 echo %wget% https://github.com/envkey/envkey-fetch/releases/download/v%VERSION%/envkey-fetch_%VERSION%_windows_amd64.tar.gz
 %wget% https://github.com/envkey/envkey-fetch/releases/download/v%VERSION%/envkey-fetch_%VERSION%_windows_amd64.tar.gz
+echo %wget% https://github.com/envkey/envkey-fetch/releases/download/v%VERSION%/envkey-fetch_%VERSION%_linux_amd64.tar.gz
+%wget% https://github.com/envkey/envkey-fetch/releases/download/v%VERSION%/envkey-fetch_%VERSION%_linux_amd64.tar.gz
 
 echo %tar% envkey-fetch_%VERSION%_windows_amd64.tar.gz %scriptdir%contentFiles\any\any\
 %tar% envkey-fetch_%VERSION%_windows_amd64.tar.gz %scriptdir%contentFiles\any\any\
+echo %tar% envkey-fetch_%VERSION%_linux_amd64.tar.gz %scriptdir%contentFiles\any\any\
+%tar% envkey-fetch_%VERSION%_linux_amd64.tar.gz %scriptdir%contentFiles\any\any\
 
 del envkey-fetch_%VERSION%_windows_amd64.tar.gz
+del envkey-fetch_%VERSION%_linux_amd64.tar.gz
 
 pause

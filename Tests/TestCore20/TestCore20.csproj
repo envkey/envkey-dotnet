@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EnvKey" Version="1.1.1.3" />
+    <PackageReference Include="EnvKey" Version="1.1.6" />
   </ItemGroup>
 
 </Project>

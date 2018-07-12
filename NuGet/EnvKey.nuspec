@@ -16,6 +16,7 @@
     </dependencies>
     <contentFiles>
       <files include="any\any\envkey-fetch.exe" buildAction="none" copyToOutput="true" flatten="true" />
+      <files include="any\any\envkey-fetch" buildAction="none" copyToOutput="true" flatten="true" />
     </contentFiles>
   </metadata>
   <!--
