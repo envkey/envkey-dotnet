@@ -25,6 +25,7 @@
   -->
   <files>
     <file src="contentFiles\any\any\envkey-fetch.exe" target="contentFiles\any\any\envkey-fetch.exe" />
+    <file src="contentFiles\any\any\envkey-fetch" target="contentFiles\any\any\envkey-fetch" />
 
     <file src="..\Lib\EnvKey35\bin\EnvKey.dll" target="lib\net35\EnvKey.dll" />
     <file src="..\Lib\EnvKey35\bin\EnvKey.xml" target="lib\net35\EnvKey.xml" />
