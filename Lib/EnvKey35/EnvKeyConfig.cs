@@ -110,7 +110,7 @@ namespace EnvKey
     {
       var skipExisting = !forceUpdate;
 
-      var existingKeys = Environment.GetEnvironmentVariables().Keys.Cast<object>().Select(k => k.ToString().ToUpper()).ToArray();
+      var existingKeys = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process).Keys.Cast<object>().Select(k => k.ToString().ToUpper()).ToArray();
 
       foreach (var kvp in config)
       {

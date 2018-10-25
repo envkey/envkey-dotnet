@@ -14,7 +14,7 @@ namespace EnvKey
     /// Overrides the environment key to use.
     /// Default is the "ENVKEY" environment variable.
     /// </summary>
-    public string EnvKey { get; set; } = Environment.GetEnvironmentVariable("ENVKEY");
+    public string EnvKey { get; set; } = Environment.GetEnvironmentVariable("ENVKEY", EnvironmentVariableTarget.Process);
 
     /// <summary>
     /// The path to the envkey-fetch.exe file.
