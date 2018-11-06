@@ -24,21 +24,30 @@ namespace Test
 
       var success = envKey.TryLoadRaw(out var config);
       Console.WriteLine($"Can load as raw? {success}");
-      Console.WriteLine($"Config: {config.Trim()}");
+      if (success)
+      {
+        Console.WriteLine($"Config: {config.Trim()}");
+      }
 
       success = envKey.TryLoad(out var configDir);
       Console.WriteLine($"Can load as json? {success}");
-      Console.WriteLine($"Config Count: {configDir.Count}");
-      foreach (var kvp in configDir)
+      if (success)
       {
-        Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+        Console.WriteLine($"Config Count: {configDir.Count}");
+        foreach (var kvp in configDir)
+        {
+          Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+        }
       }
-        
+
       var countBefore = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process).Count;
       success = envKey.TryLoadIntoEnvironment();
-      var countAfter = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process).Count;
       Console.WriteLine($"Can load into environment variables? {success}");
-      Console.WriteLine($"Process EnvVars changed? {(countAfter - countBefore) > 0}");
+      if (success)
+      {
+        var countAfter = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process).Count;
+        Console.WriteLine($"Process EnvVars changed? {(countAfter - countBefore) > 0}");
+      }
 
       return 0;
     }
