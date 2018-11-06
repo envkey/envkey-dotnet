@@ -28,6 +28,12 @@ namespace EnvKey
     /// </summary>
     public bool? UseCache { get; set; }
 
+    /// <summary>
+    /// Timeout in seconds for http requests.
+    /// Default 2.
+    /// </summary>
+    public int Timeout { get; set; } = 2;
+
     internal string GetEnvKeyExecutable()
     {
       if (EnvKeyPath != null)

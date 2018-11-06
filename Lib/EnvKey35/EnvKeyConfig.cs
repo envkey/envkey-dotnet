@@ -43,9 +43,11 @@ namespace EnvKey
         ? "--cache"
         : "";
 
+      var timeout = $"--timeout {options.Timeout}";
+
       const string clientName = "--client-name envkey-dotnet";
 
-      var arguments = $"{envKey} {useCaching} {clientName}";
+      var arguments = $"{envKey} {useCaching} {timeout} {clientName}";
       var process = new Process
       {
         StartInfo = new ProcessStartInfo(fullEnvKeyExePath, arguments)
@@ -63,7 +65,7 @@ namespace EnvKey
       process.Start();
 
       var output = process.StandardOutput.ReadToEnd();
-      var successfulExit = process.WaitForExit((int)TimeSpan.FromSeconds(5).TotalMilliseconds);
+      var successfulExit = process.WaitForExit((int)TimeSpan.FromSeconds(options.Timeout + 2).TotalMilliseconds);
 
       if (!successfulExit)
       {
