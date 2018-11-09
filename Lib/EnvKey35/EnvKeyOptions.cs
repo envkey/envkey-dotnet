@@ -30,9 +30,15 @@ namespace EnvKey
 
     /// <summary>
     /// Timeout in seconds for http requests.
-    /// Default 2.
+    /// Default 10.
     /// </summary>
-    public int Timeout { get; set; } = 2;
+    public int Timeout { get; set; } = 10;
+
+    /// <summary>
+    /// Number of times to retry requests on failure.
+    /// Default 3.
+    /// </summary>
+    public int Retries { get; set; } = 3;
 
     internal string GetEnvKeyExecutable()
     {

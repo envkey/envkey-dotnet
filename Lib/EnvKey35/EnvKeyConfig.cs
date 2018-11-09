@@ -45,9 +45,11 @@ namespace EnvKey
 
       var timeout = $"--timeout {options.Timeout}";
 
+      var retries = $"--retries {options.Retries}";
+
       const string clientName = "--client-name envkey-dotnet";
 
-      var arguments = $"{envKey} {useCaching} {timeout} {clientName}";
+      var arguments = $"{envKey} {useCaching} {timeout} {retries} {clientName}";
       var process = new Process
       {
         StartInfo = new ProcessStartInfo(fullEnvKeyExePath, arguments)
