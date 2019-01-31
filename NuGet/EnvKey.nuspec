@@ -41,5 +41,8 @@
 
     <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.dll" target="lib\netcoreapp2.0\EnvKey.dll" />
     <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.xml" target="lib\netcoreapp2.0\EnvKey.xml" />
+
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.dll" target="lib\netcoreapp2.2\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.xml" target="lib\netcoreapp2.2\EnvKey.xml" />
   </files>
 </package>
