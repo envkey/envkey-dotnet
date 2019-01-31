@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EnvKey.Platform.Osx64</id>
+    <version>$version$</version>
+    <title>EnvKey.Platform.Osx64</title>
+    <authors>Bernhard Millauer</authors>
+    <owners>EnvKey</owners>
+    <tags>envkey</tags>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/envkey/envkey-dotnet/blob/master/LICENCE.txt</licenseUrl>
+    <projectUrl>https://github.com/envkey/envkey-dotnet</projectUrl>
+    <description>
+      This package contains the envkey executable for osx 64 bit.
+      This package must be referenced in the executable project, otherwise the envkey binaries aren't copied to the output folder.
+    </description>
+    <dependencies>
+      <group>
+        <dependency id="EnvKey.Sdk" version="[$version$]" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any\any\envkey-fetch_darwin64" buildAction="none" copyToOutput="true" flatten="true" />
+    </contentFiles>
+  </metadata>
+  <!--
+  what the nuspec is actually doing is moving the contentFiles\any\any\envkey-fetch.exe to contentFiles\any\any\envkey-fetch.exe so 
+  that the <contentFiles> node can pick the file from any\any\envkey-fetch.exe (without contentFiles). This is very confusing but works...
+  -->
+  <files>
+    <file src="contentFiles\darwin64\envkey-fetch" target="contentFiles\any\any\envkey-fetch_darwin64" />
+  </files>
+</package>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EnvKey.Sdk</id>
+    <version>$version$</version>
+    <title>EnvKey.Sdk</title>
+    <authors>Bernhard Millauer</authors>
+    <owners>EnvKey</owners>
+    <tags>envkey</tags>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/envkey/envkey-dotnet/blob/master/LICENCE.txt</licenseUrl>
+    <projectUrl>https://github.com/envkey/envkey-dotnet</projectUrl>
+    <repository type="git" url="https://github.com/envkey/envkey-dotnet" branch="master" />
+    <description>
+      Don't reference this package directly. 
+      It contains the dotnet sdk for envkey but not any envkey executable. 
+      Use the 'EnvKey' package or a combination of 'EnvKey.Platform.*'.
+    </description>
+    <dependencies>
+      <group>
+        <!--Default dependencies group-->
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Lib\EnvKey35\bin\EnvKey.dll" target="lib\net35\EnvKey.dll" />
+    <file src="..\Lib\EnvKey35\bin\EnvKey.xml" target="lib\net35\EnvKey.xml" />
+
+    <file src="..\Lib\EnvKey46\bin\EnvKey.dll" target="lib\net46\EnvKey.dll" />
+    <file src="..\Lib\EnvKey46\bin\EnvKey.xml" target="lib\net46\EnvKey.xml" />
+
+    <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.dll" target="lib\net471\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.xml" target="lib\net471\EnvKey.xml" />
+
+    <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.dll" target="lib\netstandard2.0\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.xml" target="lib\netstandard2.0\EnvKey.xml" />
+
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.dll" target="lib\netcoreapp2.0\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.xml" target="lib\netcoreapp2.0\EnvKey.xml" />
+
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.dll" target="lib\netcoreapp2.2\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.xml" target="lib\netcoreapp2.2\EnvKey.xml" />
+  </files>
+</package>

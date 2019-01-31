@@ -56,9 +56,22 @@ namespace EnvKey
         return null;
       }
 
-      var envKeyExecutable = Environment.OSVersion.Platform.ToString().ToLower().Contains("win")
-        ? "envkey-fetch.exe"
-        : "envkey-fetch";
+      string envKeyExecutable;
+      switch (GetOsPlatform())
+      {
+        case OsPlatformType.Windows:
+          envKeyExecutable = "envkey-fetch_win64.exe";
+          break;
+        case OsPlatformType.Linux:
+          envKeyExecutable = "envkey-fetch_linux64";
+          break;
+        case OsPlatformType.Osx:
+          envKeyExecutable = "envkey-fetch_darwin64";
+          break;
+        default:
+
+          throw new ArgumentOutOfRangeException();
+      }
 
       var fullEnvKeyExePath = Path.Combine(searchPath, envKeyExecutable);
       Trace.WriteLine($"Using '{fullEnvKeyExePath}' as envkey executable.");
@@ -92,6 +105,33 @@ namespace EnvKey
 #else
       return false;
 #endif
+    }
+
+    /// <summary>
+    /// Get the current os platform.
+    /// </summary>
+    public static OsPlatformType GetOsPlatform()
+    {
+      OperatingSystem os = Environment.OSVersion;
+      PlatformID pid = os.Platform;
+      switch (pid)
+      {
+        case PlatformID.Win32NT:
+        case PlatformID.Win32S:
+        case PlatformID.Win32Windows:
+        case PlatformID.WinCE:
+
+          return OsPlatformType.Windows;
+        case PlatformID.Unix:
+          
+          return OsPlatformType.Linux;
+        case PlatformID.MacOSX:
+
+          return OsPlatformType.Osx;
+        default:
+
+          throw new PlatformNotSupportedException($"'{pid} is not supported.");
+      }
     }
   }
 }

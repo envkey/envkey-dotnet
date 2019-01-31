@@ -22,5 +22,10 @@ dotnet ..\Tests\bin\netcoreapp2.0\TestCore20.dll %ENVKEY%
 ECHO.
 ECHO.
 
+ECHO ==== netcoreapp2.2 ====
+dotnet ..\Tests\bin\netcoreapp2.2\TestCore22.dll %ENVKEY%
+ECHO.
+ECHO.
+
 ECHO DONE!
 pause

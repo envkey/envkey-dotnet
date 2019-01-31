@@ -1,22 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-  <!--Config help: https://docs.microsoft.com/en-us/nuget/reference/nuspec-->
   <metadata>
     <id>EnvKey</id>
-    <version>1.0.0</version>
-    <title></title>
+    <version>$version$</version>
+    <title>EnvKey</title>
     <authors>Bernhard Millauer</authors>
     <owners>EnvKey</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Loads the configuration of envkey.</description>
+    <tags>envkey</tags>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/envkey/envkey-dotnet/blob/master/LICENCE.txt</licenseUrl>
+    <projectUrl>https://github.com/envkey/envkey-dotnet</projectUrl>
+    <description>
+      This package consists of dependencies to envkey sdk and contains the envkey binaries for the major supported platforms Windows64, Linux64 and Osx64.
+      This package must be referenced in the executable project, otherwise the envkey binaries aren't copied to the output folder.
+    </description>
     <dependencies>
       <group>
-        <!--Default dependencies group-->
+        <dependency id="EnvKey.Sdk" version="[$version$]" />
+
+        <!-- Nope: nuget packages doesn't inherit copy-to-output files from other packages. We need to inlude them ourself. -->
+        
+        <!-- <dependency id="EnvKey.Platform.Windows64" version="[$version$]" /> -->
+        <!-- <dependency id="EnvKey.Platform.Linux64" version="[$version$]" /> -->
+        <!-- <dependency id="EnvKey.Platform.Osx64" version="[$version$]" /> -->
       </group>
     </dependencies>
     <contentFiles>
-      <files include="any\any\envkey-fetch.exe" buildAction="none" copyToOutput="true" flatten="true" />
-      <files include="any\any\envkey-fetch" buildAction="none" copyToOutput="true" flatten="true" />
+      <files include="any\any\envkey-fetch_win64.exe" buildAction="none" copyToOutput="true" flatten="true" />
+      <files include="any\any\envkey-fetch_linux64" buildAction="none" copyToOutput="true" flatten="true" />
+      <files include="any\any\envkey-fetch_darwin64" buildAction="none" copyToOutput="true" flatten="true" />
     </contentFiles>
   </metadata>
   <!--
@@ -24,25 +36,8 @@
   that the <contentFiles> node can pick the file from any\any\envkey-fetch.exe (without contentFiles). This is very confusing but works...
   -->
   <files>
-    <file src="contentFiles\any\any\envkey-fetch.exe" target="contentFiles\any\any\envkey-fetch.exe" />
-    <file src="contentFiles\any\any\envkey-fetch" target="contentFiles\any\any\envkey-fetch" />
-
-    <file src="..\Lib\EnvKey35\bin\EnvKey.dll" target="lib\net35\EnvKey.dll" />
-    <file src="..\Lib\EnvKey35\bin\EnvKey.xml" target="lib\net35\EnvKey.xml" />
-
-    <file src="..\Lib\EnvKey46\bin\EnvKey.dll" target="lib\net46\EnvKey.dll" />
-    <file src="..\Lib\EnvKey46\bin\EnvKey.xml" target="lib\net46\EnvKey.xml" />
-
-    <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.dll" target="lib\net471\EnvKey.dll" />
-    <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.xml" target="lib\net471\EnvKey.xml" />
-
-    <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.dll" target="lib\netstandard2.0\EnvKey.dll" />
-    <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.xml" target="lib\netstandard2.0\EnvKey.xml" />
-
-    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.dll" target="lib\netcoreapp2.0\EnvKey.dll" />
-    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.xml" target="lib\netcoreapp2.0\EnvKey.xml" />
-
-    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.dll" target="lib\netcoreapp2.2\EnvKey.dll" />
-    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.xml" target="lib\netcoreapp2.2\EnvKey.xml" />
+    <file src="contentFiles\win64\envkey-fetch.exe" target="contentFiles\any\any\envkey-fetch_win64.exe" />
+    <file src="contentFiles\linux64\envkey-fetch" target="contentFiles\any\any\envkey-fetch_linux64" />
+    <file src="contentFiles\darwin64\envkey-fetch" target="contentFiles\any\any\envkey-fetch_darwin64" />
   </files>
 </package>
