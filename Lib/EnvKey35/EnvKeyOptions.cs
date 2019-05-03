@@ -30,9 +30,9 @@ namespace EnvKey
 
     /// <summary>
     /// Timeout in seconds for http requests.
-    /// Default 10.
+    /// Default 15.
     /// </summary>
-    public int Timeout { get; set; } = 10;
+    public int Timeout { get; set; } = 15;
 
     /// <summary>
     /// Number of times to retry requests on failure.
