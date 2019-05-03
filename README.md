@@ -1,6 +1,5 @@
 # EnvKey for .net Framework
 
-[NuGet Package](https://www.nuget.org/packages/EnvKey)  
 * EnvKey [![NuGet version](https://badge.fury.io/nu/EnvKey.svg)](https://badge.fury.io/nu/EnvKey)
 * EnvKey.Sdk [![NuGet version](https://badge.fury.io/nu/EnvKey.Sdk.svg)](https://badge.fury.io/nu/EnvKey.Sdk)
 * EnvKey.Platform.Windows64 [![NuGet version](https://badge.fury.io/nu/EnvKey.Platform.Windows64.svg)](https://badge.fury.io/nu/EnvKey.Platform.Windows64)
