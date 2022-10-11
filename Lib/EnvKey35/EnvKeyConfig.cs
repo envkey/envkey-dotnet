@@ -46,10 +46,8 @@ namespace EnvKey
       var timeout = $"--timeout {options.Timeout}";
 
       var retries = $"--retries {options.Retries}";
-
-      const string clientName = "--client-name envkey-dotnet";
-
-      var arguments = $"{envKey} {useCaching} {timeout} {retries} {clientName}";
+      
+      var arguments = $"--json {useCaching} {timeout} {retries}";
       var process = new Process
       {
         StartInfo = new ProcessStartInfo(fullEnvKeyExePath, arguments)
@@ -60,7 +58,8 @@ namespace EnvKey
           RedirectStandardOutput = true,
           RedirectStandardError = true,
           StandardErrorEncoding = Encoding.UTF8,
-          StandardOutputEncoding = Encoding.UTF8
+          StandardOutputEncoding = Encoding.UTF8,
+          EnvironmentVariables = { ["ENVKEY"] = envKey }
         }
       };
 

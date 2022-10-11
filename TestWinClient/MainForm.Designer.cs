@@ -65,6 +65,7 @@
       this.EnvKeyToUseTextbox.Name = "EnvKeyToUseTextbox";
       this.EnvKeyToUseTextbox.Size = new System.Drawing.Size(432, 20);
       this.EnvKeyToUseTextbox.TabIndex = 1;
+      this.EnvKeyToUseTextbox.Text = "oy2i4cucb2rl434bvlead46lw5fpcv4elbdommdj4enpii";
       // 
       // label1
       // 

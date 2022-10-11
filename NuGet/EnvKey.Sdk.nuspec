@@ -25,20 +25,26 @@
   <files>
     <file src="..\Lib\EnvKey35\bin\EnvKey.dll" target="lib\net35\EnvKey.dll" />
     <file src="..\Lib\EnvKey35\bin\EnvKey.xml" target="lib\net35\EnvKey.xml" />
+    <file src="..\Lib\EnvKey35\bin\EnvKey.pdb" target="lib\net35\EnvKey.pdb" />
 
     <file src="..\Lib\EnvKey46\bin\EnvKey.dll" target="lib\net46\EnvKey.dll" />
     <file src="..\Lib\EnvKey46\bin\EnvKey.xml" target="lib\net46\EnvKey.xml" />
+    <file src="..\Lib\EnvKey46\bin\EnvKey.pdb" target="lib\net46\EnvKey.pdb" />
 
-    <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.dll" target="lib\net471\EnvKey.dll" />
-    <file src="..\Lib\EnvKeyMulti\bin\net471\EnvKey.xml" target="lib\net471\EnvKey.xml" />
+    <file src="..\Lib\EnvKeyMulti\bin\net48\EnvKey.dll" target="lib\net48\EnvKey.dll" />
+    <file src="..\Lib\EnvKeyMulti\bin\net48\EnvKey.xml" target="lib\net48\EnvKey.xml" />
+    <file src="..\Lib\EnvKeyMulti\bin\net48\EnvKey.pdb" target="lib\net48\EnvKey.pdb" />
 
     <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.dll" target="lib\netstandard2.0\EnvKey.dll" />
     <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.xml" target="lib\netstandard2.0\EnvKey.xml" />
+    <file src="..\Lib\EnvKeyMulti\bin\netstandard2.0\EnvKey.pdb" target="lib\netstandard2.0\EnvKey.pdb" />
 
     <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.dll" target="lib\netcoreapp2.0\EnvKey.dll" />
     <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.xml" target="lib\netcoreapp2.0\EnvKey.xml" />
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.0\EnvKey.pdb" target="lib\netcoreapp2.0\EnvKey.pdb" />
 
     <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.dll" target="lib\netcoreapp2.2\EnvKey.dll" />
     <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.xml" target="lib\netcoreapp2.2\EnvKey.xml" />
+    <file src="..\Lib\EnvKeyMulti\bin\netcoreapp2.2\EnvKey.pdb" target="lib\netcoreapp2.2\EnvKey.pdb" />
   </files>
 </package>

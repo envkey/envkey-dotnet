@@ -17,8 +17,8 @@ namespace EnvKey
     public string EnvKey { get; set; } = Environment.GetEnvironmentVariable("ENVKEY", EnvironmentVariableTarget.Process);
 
     /// <summary>
-    /// The path to the envkey-fetch.exe file.
-    /// Default path is the executing assembly path + "envkey-fetch.exe".
+    /// The path to the envkey-source.exe file.
+    /// Default path is the executing assembly path + "envkey-source.exe".
     /// </summary>
     public string EnvKeyPath { get; set; }
 
@@ -52,7 +52,7 @@ namespace EnvKey
 
       if (searchPath == null)
       {
-        Trace.WriteLine("Can't determine the executable path of envkey-fetch.");
+        Trace.WriteLine("Can't determine the executable path of envkey-source.");
         return null;
       }
 
@@ -60,13 +60,13 @@ namespace EnvKey
       switch (GetOsPlatform())
       {
         case OsPlatformType.Windows:
-          envKeyExecutable = "envkey-fetch_win64.exe";
+          envKeyExecutable = "envkey-source_win64.exe";
           break;
         case OsPlatformType.Linux:
-          envKeyExecutable = "envkey-fetch_linux64";
+          envKeyExecutable = "envkey-source_linux64";
           break;
         case OsPlatformType.Osx:
-          envKeyExecutable = "envkey-fetch_darwin64";
+          envKeyExecutable = "envkey-source_darwin64";
           break;
         default:
 

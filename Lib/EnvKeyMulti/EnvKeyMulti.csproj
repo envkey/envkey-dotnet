@@ -36,14 +36,14 @@
     <DocumentationFile>bin\netcoreapp2.2\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>bin\net471\EnvKey.xml</DocumentationFile>
+    <DocumentationFile>bin\net48\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net471|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>bin\net471\EnvKey.xml</DocumentationFile>
+    <DocumentationFile>bin\net48\EnvKey.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

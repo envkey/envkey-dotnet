@@ -20,14 +20,14 @@
       </group>
     </dependencies>
     <contentFiles>
-      <files include="any\any\envkey-fetch_win64.exe" buildAction="none" copyToOutput="true" flatten="true" />
+      <files include="any\any\envkey-source_win64.exe" buildAction="none" copyToOutput="true" flatten="true" />
     </contentFiles>
   </metadata>
   <!--
-  what the nuspec is actually doing is moving the contentFiles\any\any\envkey-fetch.exe to contentFiles\any\any\envkey-fetch.exe so 
-  that the <contentFiles> node can pick the file from any\any\envkey-fetch.exe (without contentFiles). This is very confusing but works...
+  what the nuspec is actually doing is moving the contentFiles\any\any\envkey-source.exe to contentFiles\any\any\envkey-source.exe so 
+  that the <contentFiles> node can pick the file from any\any\envkey-source.exe (without contentFiles). This is very confusing but works...
   -->
   <files>
-    <file src="contentFiles\win64\envkey-fetch.exe" target="contentFiles\any\any\envkey-fetch_win64.exe" />
+    <file src="contentFiles\win64\envkey-source.exe" target="contentFiles\any\any\envkey-source_win64.exe" />
   </files>
 </package>

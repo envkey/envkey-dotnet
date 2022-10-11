@@ -3,7 +3,7 @@
 set scriptdir=%~dp0
 set nuget="%~dp0Nuget.exe"
 
-set /P VERSION=Version to Build (eg. 1.2.4): 
+set /P VERSION=Version to Build (eg. 2.0.27 or 2.0.27-pre1): 
 
 DEL %scriptdir%*.nupkg>NUL 2>&1
 
