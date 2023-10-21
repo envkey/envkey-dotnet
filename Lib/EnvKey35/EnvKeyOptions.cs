@@ -112,6 +112,14 @@ namespace EnvKey
     /// </summary>
     public static OsPlatformType GetOsPlatform()
     {
+      //https://github.com/dotnet/runtime/issues/21660#issuecomment-633628590
+      // For compatibility reasons with Mono, PlatformID.Unix is returned on MacOSX. PlatformID.MacOSX
+      // is hidden from the editor and shouldn't be used.
+      if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+      {
+        return OsPlatformType.Osx;
+      }
+      
       OperatingSystem os = Environment.OSVersion;
       PlatformID pid = os.Platform;
       switch (pid)
@@ -125,9 +133,7 @@ namespace EnvKey
         case PlatformID.Unix:
           
           return OsPlatformType.Linux;
-        case PlatformID.MacOSX:
-
-          return OsPlatformType.Osx;
+          
         default:
 
           throw new PlatformNotSupportedException($"'{pid} is not supported.");
