@@ -1,7 +1,7 @@
 @ECHO OFF
 
 REM SET ENVKEY=%1
-SET ENVKEY=ek22Z2nfpQuiDRP3CMUQdTMB-3GqoMUXob9wTHmRQkDjMWh
+SET ENVKEY=eke4nuFE6XNCb9tSztxyYKfC-37M59z121nqigZkXiCJq8o
 
 ECHO ==== net35 ====
 ..\Tests\bin\net35\Test35.exe %ENVKEY%
